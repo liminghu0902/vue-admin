@@ -33,7 +33,8 @@ module.exports = {
       'view': '@/view',
       'util': '@/util',
       'lang': '@/lang',
-      'assets': '@/assets'
+      'assets': '@/assets',
+      'router': '@/router'
     }
   },
   module: {

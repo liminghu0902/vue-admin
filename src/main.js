@@ -5,6 +5,8 @@ import filter from './filter';
 import directive from './directive';
 import i18n from './lang';
 import svgIcon from './icons';
+import roles from '@/roles';
+console.log(roles.getRoutes(1))
 
 Vue.config.productionTip = false
 
