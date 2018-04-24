@@ -6,7 +6,7 @@
 <script>
     export default {
         props: {
-            iconClass: {
+            iconName: {
                 type: String
             },
             svgClass: {
@@ -15,7 +15,7 @@
         },
         computed: {
             iconHref() {
-                return `#icon-${this.iconClass}`;
+                return `#icon-${this.iconName}`;
             },
             svgName() {
                 return this.svgClass ? `svg-icon-${this.svgClass}` : '';

@@ -1,12 +1,12 @@
 <template>
-  <div><svg-icon :svgClass="iconClass" :iconClass="iconClass"></svg-icon>home</div>
+  <div><svg-icon :iconName="iconName"></svg-icon>home</div>
   
 </template>
 <script>
     export default {
         data () {
           return {
-            iconClass: '404'
+            iconName: '404'
           }
         },
         mounted () {

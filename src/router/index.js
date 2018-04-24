@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { staticRoutes } from './routes';
+import { constantRoutes } from './routes';
 
 Vue.use(Router);
 
 export default new Router({
-  routes: staticRoutes
+  routes: constantRoutes
 });
