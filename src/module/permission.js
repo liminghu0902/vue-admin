@@ -1,4 +1,4 @@
-import * as roleTypes from './role_types';
+import * as roleTypes from 'constant/roles';
 import { constantRoutes, asyncRoutes } from 'router/routes';
 import router from 'router';
 
@@ -24,20 +24,26 @@ const filterRoute = (rid, route) => {
                 filterRoute(rid, r);
             }
             return hasPermission(rid, r);
-        })    
+        })
     }
 };
 
-//获取需要添加的路由
-const getAsyncRoutes = rid => {
-    rid = parseInt(rid);
+//获取有角色权限的路由
+const getPermissionRoutes = rid => {
     return asyncRoutes.filter(route => {
         filterRoute(rid, route);
         return hasPermission(rid, route);
-    })
+    });
 };
 
+//构建路由, 将获取的角色权限路由添加到router中
+export const buildRouter = rid => {
+    rid = parseInt(rid);
+    router.addRoutes(getPermissionRoutes(rid));
+};
 
-export default {
-    
-}
+//获取菜单数组
+export const buildSidebarMenus = rid => {
+    rid = parseInt(rid);
+    return getPermissionRoutes(rid);
+};

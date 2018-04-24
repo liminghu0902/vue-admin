@@ -1,8 +1,8 @@
 export default {
-    exportBtn() {
+    exportBtn(el, binding) {
 
     },
-    editBtn() {
+    editBtn(el, binding) {
         
     }
 }
