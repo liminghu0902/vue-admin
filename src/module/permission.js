@@ -8,7 +8,7 @@ const hasPermission = (rid, route) => {
         return true;
     } else {
         if (route.meta && route.meta.roles && route.meta.roles.length) {
-            if (route.meta.roles.indexOf(rid) !== -1) {
+            if (route.meta.roles.indexOf(rid) !== -1 || route.meta.roles === '*') {
                 return true;
             }
         }
@@ -42,8 +42,23 @@ export const buildRouter = rid => {
     router.addRoutes(getPermissionRoutes(rid));
 };
 
+//过滤子路由菜单
+const filterMenu = menu => {
+    if (menu.children && menu.children.length) {
+        menu.children = menu.children.filter(m => {
+            filterMenu(m)
+            return !menu.meta.hasOwnProperty('isMenu');
+        })
+    }
+};
+
 //获取菜单数组
 export const buildSidebarMenus = rid => {
     rid = parseInt(rid);
-    return getPermissionRoutes(rid);
+    const sidebarMenus = getPermissionRoutes(rid)[0].children.filter(menu => {
+        filterMenu(menu);
+        return !menu.meta.hasOwnProperty('isMenu');
+    });
+    sessionStorage.setItem('sidebarMenus', JSON.stringify(sidebarMenus));
+    return sidebarMenus;
 };

@@ -35,7 +35,8 @@ module.exports = {
       'lang': '@/lang',
       'assets': '@/assets',
       'router': '@/router',
-      'constant': '@/constant'
+      'constant': '@/constant',
+      'components': '@/components'
     }
   },
   module: {

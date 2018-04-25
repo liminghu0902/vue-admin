@@ -35,7 +35,7 @@ function checkCode(res) {
 		alert(res.statusText)
 	}
 	
-	return res
+	return res.data
 }
 
 export default {

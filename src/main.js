@@ -6,7 +6,9 @@ import filter from './filter';
 import directive from './directive';
 import i18n from './lang';
 import svgIcon from './icons';
-import './assets/style/reset.less';
+import VueForm from 'vue-form';
+
+Vue.use(VueForm);
 
 Vue.config.productionTip = false;
 
