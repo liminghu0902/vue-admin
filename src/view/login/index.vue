@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-    import { User, buildRouter, buildSidebarMenus } from 'module';
+    import { User, buildRouter, buildSidebarMenus } from '@/module';
     export default {
         data() {
             return {

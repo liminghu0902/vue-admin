@@ -1,6 +1,6 @@
-import * as roleTypes from 'constant/roles';
-import { constantRoutes, asyncRoutes } from 'router/routes';
-import router from 'router';
+import * as roleTypes from '@/constant/roles';
+import { constantRoutes, asyncRoutes } from '@/router/routes';
+import router from '@/router';
 
 //判读是否有权限
 const hasPermission = (rid, route) => {

@@ -1,5 +1,5 @@
-import { Api } from 'api';
-import { Request, Cookie } from 'util';
+import { Api } from '@/api';
+import { Request, Cookie } from '@/util';
 
 export const User = {
 

@@ -6,8 +6,8 @@
     </div>
 </template>
 <script>
-    import headNav from 'components/header';
-    import sidebar from 'components/sidebar';
+    import headNav from '@/components/header';
+    import sidebar from '@/components/sidebar';
     export default {
         components: {
             headNav,

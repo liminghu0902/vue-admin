@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import { constantRoutes } from './routes';
-import { Cookie } from 'util';
-import { buildRouter } from 'module';
+import { Cookie } from '@/util';
+import { buildRouter } from '@/module';
 
 Vue.use(Router);
 

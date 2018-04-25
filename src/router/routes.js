@@ -1,11 +1,11 @@
 
-import * as roleTypes from 'constant/roles';
+import * as roleTypes from '@/constant/roles';
 import Layout from '../layout';
-import Login from 'view/login';
-import Error_404 from 'view/error/error_404';
-import Home from 'view/home';
-import Order from 'view/order';
-import Customer from 'view/customer';
+import Login from '@/view/login';
+import Error_404 from '@/view/error/error_404';
+import Home from '@/view/home';
+import Order from '@/view/order';
+import Customer from '@/view/customer';
 
 export const constantRoutes = [
     { path: '/', redirect: '/login' },

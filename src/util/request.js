@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { Cookie } from 'util';
+import { Cookie } from '@/util';
 
 axios.interceptors.request.use(config => {
 	return config
