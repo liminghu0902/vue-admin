@@ -1,8 +1,11 @@
 <template>
-    <div id="layout" class="skin-blue layout-top-nav">
+    <div id="layout" class="wrapper">
         <head-nav></head-nav>
         <sidebar></sidebar>
-        <router-view/>
+        <div class="content-wrapper">
+            <router-view/>
+        </div>
+        
     </div>
 </template>
 <script>
