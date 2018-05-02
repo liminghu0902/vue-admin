@@ -1,6 +1,6 @@
 <template>
     <ul class="treeview-menu">
-        <li v-for="(menu, i) in menuChildren" :key="i">
+        <li v-for="(menu, i) in menuChildren" :key="i" @click="menuClick(menu)">
             <a href="javascript:void(0)">
                 <i class="fa fa-share"></i> <span>{{menu.meta.name}}</span>
                 <span class="pull-right-container" v-if="menu.children && menu.children.length">
@@ -15,6 +15,11 @@
     export default {
         props: {
             menuChildren: null
+        },
+        methods: {
+            menuClick(menu) {
+                this.$router.push({name: menu.name});
+            }
         },
         beforeCreate() {
             this.$options.components.sidebarMenuNode = () => import('./sidebar-menu-node');

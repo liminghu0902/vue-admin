@@ -60,15 +60,17 @@
                 };
                 User.login(this.user)
                 .then(res => {
-                    const rid = res.data.roles[0].rid;
                     //保存用户信息
-                    sessionStorage.setItem('rid', rid);
-                    sessionStorage.setItem('roles', res.data.roles);
-                    sessionStorage.setItem('user', res.data.user);
+                    const user = {
+                        rid: res.data.roles[0].rid,
+                        username: res.data.user.username
+                    };
+                    sessionStorage.setItem('roles', JSON.stringify(res.data.roles));
+                    sessionStorage.setItem('user', JSON.stringify(user));
                     //构建路由
-                    buildRouter(rid);
+                    buildRouter(user.rid);
                     //获取菜单列表
-                    buildSidebarMenus(rid);
+                    buildSidebarMenus(user.rid);
                     //跳转到首页
                     this.$router.push('/home');
                 })

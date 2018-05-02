@@ -1,9 +1,14 @@
 <template>
     <ul class="sidebar-menu" data-widget="tree">
-        <li class="treeview" v-for="(menu, index) in sidebarMenus" :key="index" @click="menuClick(menu, $event)">
-            <a href="javascript:void(0)">
-                <i class="fa fa-share"></i> <span>{{menu.meta.name}}</span>
+        <li 
+            :class="['menu-item',{'treeview': menu.children && menu.children.length}]" 
+            v-for="(menu, index) in sidebarMenus" :key="index" 
+            @click="menuClick(menu, $event)">
+            <a href="javascript:;">
+                <i :class="['fa', 'fa-'+menu.meta.icon]"></i> 
+                <span>{{menu.meta.name}}</span>
                 <span class="pull-right-container" v-if="menu.children && menu.children.length">
+                   
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
@@ -16,11 +21,16 @@
     import sidebarMenuNode from './sidebar-menu-node';
     export default {
         components: {
-            sidebarMenuNode
+            sidebarMenuNode,
+        },
+        data() {
+            return {
+
+            }
         },
         computed: {
             rid() {
-                return sessionStorage.getItem('rid');
+                return JSON.parse(sessionStorage.getItem('user')).rid;
             },
             sidebarMenus() {
                 return buildSidebarMenus(this.rid);
@@ -28,12 +38,19 @@
         },
         methods: {
             menuClick(menu, $event) {
-               
+                this.$router.push({name: menu.name})
             }
         },
         mounted() {
-            
+            $('.menu-item').on('click', function() {
+                $(this).addClass('active menu-open').siblings('li').removeClass('active menu-open');
+            })
+            // $('.treeview').on('click', function() {
+            //     $(this).addClass('menu-open').siblings('.treeview').removeClass('menu-open');
+            // })
         }
     }
+
+    
 </script>
 

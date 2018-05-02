@@ -5,7 +5,6 @@
         <div class="content-wrapper">
             <router-view/>
         </div>
-        
     </div>
 </template>
 <script>
@@ -15,6 +14,9 @@
         components: {
             headNav,
             sidebar
+        },
+        mounted() {
+            $('body').resize();
         }
     }
 </script>

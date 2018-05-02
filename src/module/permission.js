@@ -1,10 +1,10 @@
-import * as roleTypes from '@/constant/roles';
+import { SUPER_ADMIN } from '@/constant/roles';
 import { constantRoutes, asyncRoutes } from '@/router/routes';
 import router from '@/router';
 
 //判读是否有权限
 const hasPermission = (rid, route) => {
-    if (rid === roleTypes.SUPER_ADMIN) {
+    if (rid === SUPER_ADMIN) {
         return true;
     } else {
         if (route.meta && route.meta.roles && route.meta.roles.length) {
@@ -54,6 +54,7 @@ const filterMenu = menu => {
 
 //获取菜单数组
 export const buildSidebarMenus = rid => {
+    console.log(rid)
     rid = parseInt(rid);
     const sidebarMenus = getPermissionRoutes(rid)[0].children.filter(menu => {
         filterMenu(menu);

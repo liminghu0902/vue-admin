@@ -15,6 +15,7 @@ axios.interceptors.response.use(response => {
 })
 
 function checkStatus(response) {
+	
 	if(response && (response.status === 200 || response.status === 304 || response.status === 400)) {
 		return response
 	}
@@ -62,7 +63,7 @@ export default {
 			method: 'get',
 			baseURL: '',
 			url: url,
-			params: params,
+			params: params || {},
 			timeout: 10000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',

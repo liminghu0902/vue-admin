@@ -13,7 +13,7 @@ const router = new Router({
 export default router;
 
 //页面刷新之后重新构建路由
-const rid = sessionStorage.getItem('rid');
-if(rid) {
-  buildRouter(rid);
+const user = JSON.parse(sessionStorage.getItem('user'));
+if(user && user.rid) {
+  buildRouter(user.rid);
 };

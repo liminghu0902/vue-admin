@@ -25,8 +25,10 @@
 </script>
 <style>
     .svg-icon {
+        font-size: 14px;
         width: 1em;
         height: 1em;
+        margin-right: 5px;
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
