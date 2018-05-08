@@ -1,9 +1,21 @@
 <template>
-  <div>home</div>
+    <div>
+      home
+      <Dialog ref="dialog"></Dialog>
+      <Alert ref="alert"></Alert>
+      <button class="btn" @click="openDialog">open-dialog</button>
+      <button class="btn" @click="openAlert">open-alert</button>
+    </div>
 </template>
 <script>
+    import Dialog from '@/components/dialog';
+    import Alert from '@/components/alert';
     import XLSX from 'xlsx';
     export default {
+        components: {
+            Dialog,
+            Alert
+        },
         data () {
           return {
               obj: {
@@ -15,6 +27,14 @@
                 ]
               }
           }
+        },
+        methods: {
+            openDialog() {
+              this.$refs.dialog.openDialog();
+            },
+            openAlert() {
+              this.$refs.alert.alert('', 'hh', 'dd', true);
+            }
         },
         mounted () {
             var worksheet = XLSX.utils.aoa_to_sheet(this.obj.data);

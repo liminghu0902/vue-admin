@@ -19,7 +19,7 @@ export const asyncRoutes = [
             { path: '/home', name: 'home', component: Home, meta: { name: '首页', roles: [EDIT_ADMIN], icon: 'tachometer' } },
             { path: '/order', name: 'order', component: Order, meta: { name: '订单管理', roles: [], icon: 'file' }, 
                 children: [
-                    { path: '/order-detail', name: 'orderDetail', meta: { name: '订单详情', roles: [], icon: '', isMenu: false } }
+                    { path: '/order-detail', name: 'orderDetail', meta: { name: '订单详情', roles: [], icon: '' } }
                 ] },
             { path: '/order-detail', name: 'orderDetail', meta: { name: '订单详情', roles: [], icon: '', isMenu: false } },
             { path: '/customer', name: 'customer', component: Customer, meta: { name: '客户管理', roles: [EDIT_ADMIN], icon: 'users' } },
