@@ -5,16 +5,19 @@
       <Alert ref="alert"></Alert>
       <button class="btn" @click="openDialog">open-dialog</button>
       <button class="btn" @click="openAlert">open-alert</button>
+      <file-select></file-select>
     </div>
 </template>
 <script>
     import Dialog from '@/components/dialog';
     import Alert from '@/components/alert';
+    import fileSelect from '@/components/file-select';
     import XLSX from 'xlsx';
     export default {
         components: {
             Dialog,
-            Alert
+            Alert,
+            fileSelect
         },
         data () {
           return {
