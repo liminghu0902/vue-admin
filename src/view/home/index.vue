@@ -6,18 +6,21 @@
       <button class="btn" @click="openDialog">open-dialog</button>
       <button class="btn" @click="openAlert">open-alert</button>
       <file-select></file-select>
+      <Calendar></Calendar>
     </div>
 </template>
 <script>
     import Dialog from '@/components/dialog';
     import Alert from '@/components/alert';
     import fileSelect from '@/components/file-select';
+    import Calendar from '@/components/calendar';
     import XLSX from 'xlsx';
     export default {
         components: {
             Dialog,
             Alert,
-            fileSelect
+            fileSelect,
+            Calendar
         },
         data () {
           return {
