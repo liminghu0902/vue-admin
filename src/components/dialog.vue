@@ -18,8 +18,8 @@
                                 <slot></slot>
                             </div>
                             <div class="dialog-footer">
-                                <button type="button" @click="handleCancelOfDialog" class="btn btn-default">取消</button>
-                                <button type="button" @click="handleSureOfDialog" class="btn btn-info">确定</button>
+                                <button type="button" @click="handleCancel" class="btn btn-default">取消</button>
+                                <button type="button" @click="handleSure" class="btn btn-info">确定</button>
                             </div>
                         </div>
                     </transition>
@@ -49,12 +49,12 @@
             }
         },
         methods: {
-            handleCancelOfDialog() {
+            handleCancel() {
                 this.showDialog = false;
-                this.$emit('handleCancelOfDialog');
+                this.$emit('handleCancel');
             },
-            handleSureOfDialog() {
-                this.$emit('handleSureOfDialog');
+            handleSure() {
+                this.$emit('handleSure');
             },
             closeDialog() {
                 this.showDialog = false;

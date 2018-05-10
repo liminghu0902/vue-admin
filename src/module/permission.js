@@ -54,7 +54,6 @@ const filterMenu = menu => {
 
 //获取菜单数组
 export const buildSidebarMenus = rid => {
-    console.log(rid)
     rid = parseInt(rid);
     const sidebarMenus = getPermissionRoutes(rid)[0].children.filter(menu => {
         filterMenu(menu);

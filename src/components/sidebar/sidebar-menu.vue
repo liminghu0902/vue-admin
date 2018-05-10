@@ -24,7 +24,7 @@
         },
         data() {
             return {
-
+                breadCrumbs: []
             }
         },
         computed: {
@@ -37,7 +37,9 @@
         },
         methods: {
             menuClick(menu, $event) {
-                (!menu.children || (menu.children && !menu.children.length)) && this.$router.push({name: menu.name});
+                if(!menu.children || (menu.children && !menu.children.length)) {
+                    this.$router.push({name: menu.name});
+                }
             }
         },
         mounted() {
