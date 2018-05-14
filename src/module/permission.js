@@ -1,6 +1,7 @@
 import { SUPER_ADMIN } from '@/constant/roles';
 import { constantRoutes, asyncRoutes } from '@/router/routes';
 import router from '@/router';
+import { Store } from '@/util';
 
 //判读是否有权限
 const hasPermission = (rid, route) => {
@@ -59,6 +60,6 @@ export const buildSidebarMenus = rid => {
         filterMenu(menu);
         return !menu.meta.hasOwnProperty('isMenu');
     });
-    sessionStorage.setItem('sidebarMenus', JSON.stringify(sidebarMenus));
+    Store.setItem('sidebarMenus', JSON.stringify(sidebarMenus));
     return sidebarMenus;
 };

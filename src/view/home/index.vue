@@ -19,22 +19,18 @@
 </template>
 <script>
     import Dialog from '@/components/dialog';
-    import Alert from '@/components/alert';
     import fileSelect from '@/components/file-select';
     import Calendar from '@/components/calendar';
     import Progress from '@/components/progress';
-    import Modal from '@/components/modal';
     import widgetBoxSimple from '@/components/widget/widget-box-simple';
     import contentHeader from '@/components/content-header';
     import XLSX from 'xlsx';
     export default {
         components: {
             Dialog,
-            Alert,
             fileSelect,
             Calendar,
             Progress,
-            Modal,
             widgetBoxSimple,
             contentHeader
         },

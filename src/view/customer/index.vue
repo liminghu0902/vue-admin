@@ -1,5 +1,6 @@
 <template>
     <div class="customer-wrapper">
+        <content-header></content-header>
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
@@ -37,3 +38,12 @@
         </section>
     </div>
 </template>
+<script>
+    import contentHeader from '@/components/content-header';
+    export default {
+        components: {
+            contentHeader
+        }
+    }
+</script>
+

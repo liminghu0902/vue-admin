@@ -1,6 +1,6 @@
 <template>
     <div class="modal-wrapper">
-        <div class="modal fade" :class="['modal-'+modalType]" :id="'modal-'+modalType">
+        <div class="modal fade" :class="['modal-'+modalType]" :id="id">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -10,16 +10,17 @@
                 <h4 class="modal-title" v-text="title"></h4>
               </div>
               <div class="modal-body">
+                  {{message}}
                   <slot></slot>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" 
                     v-text="cancelBtnText"
-                    @click="handleCancel">
+                    @click="cancel">
                 </button>
                 <button type="button" class="btn btn-primary" 
                     v-text="sureBtnText"
-                    @click="handleSure">
+                    @click="sure">
                 </button>
               </div>
             </div>
@@ -30,23 +31,37 @@
 <script>
     export default {
         props: {
-            modalType: {default: 'info'},
-            title: {default: '标题'},
             cancelBtnText: {default: '取消'},
             sureBtnText: {default: '确认'}
+        },
+        data() {
+            return {
+                title: '',
+                message: '',
+                modalType: 'info'
+            }
+        },
+        computed: {
+            id() {
+                return `modal-${this.modalType}-${parseInt(Math.random()*1000)}`;
+            }
         },
         methods: {
             closeModal() {
                 this.$refs['closeModalBtn'].click();
             },
-            openModal() {
-                $('.modal-wrapper .modal').modal();
+            openModal(cfg) {
+                cfg = cfg || {};
+                this.title = cfg.title || '';
+                this.message = cfg.message || '';
+                this.modalType = cfg.type || 'info';
+                $(`#${this.id}`).modal();
             },
-            handleSure() {
-                this.$emit('handelSure');
+            sure() {
+                this.$emit('sure');
             },
-            handleCancel() {
-                this.$emit('handelCancel')
+            cancel() {
+                this.$emit('cancel')
             }
         },
         mounted() {

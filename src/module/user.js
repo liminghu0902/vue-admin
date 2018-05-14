@@ -1,13 +1,15 @@
 import { Api } from '@/api';
-import { Http, Cookie } from '@/util';
+import { Http } from '@/util';
 
 export const User = {
     login (data) {
         return new Promise((resolve, reject) => {
             Http.post(Api.user.login, data)
             .then(res => {
-                Cookie.setItem('token', res.data.token);
                 resolve(res);
+            })
+            .catch(err => {
+                reject(err);
             })
         })
     },
@@ -19,5 +21,4 @@ export const User = {
             })
         })
     }
-
 }

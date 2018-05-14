@@ -8,6 +8,7 @@
     </div>
 </template>
 <script>
+    import { Store } from '@/util';
     import headNav from '@/components/header';
     import sidebar from '@/components/sidebar';
     export default {

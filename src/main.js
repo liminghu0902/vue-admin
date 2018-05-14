@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import filter from './filter';
 import directive from './directive';
+import components from './components';
 import i18n from './lang';
 import svgIcon from './icons';
 import VueForm from 'vue-form';
@@ -18,6 +19,10 @@ Object.keys(filter).forEach(key => {
 
 Object.keys(directive).forEach(key => {
   Vue.directive(key, directive[key]);
+});
+
+Object.keys(components).forEach(key => {
+  Vue.component(key, components[key])
 });
 
 new Vue({

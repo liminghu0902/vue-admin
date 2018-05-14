@@ -5,7 +5,8 @@
                 <a href="javascript:;"><img src="../../assets/images/logo.png" alt=""></a>
             </div>
             <div class="login-box-body">
-                <p class="login-box-msg"></p>
+                <!-- <p class="login-box-msg"></p> -->
+                <Alert ref="alert"></Alert>
                 <vue-form :state="formstate" @submit.prevent="onSubmit">
                     <validate tag="label">
                         <p>登陆账号:</p>
@@ -43,6 +44,7 @@
 </template>
 <script>
     import { User, buildRouter, buildSidebarMenus } from '@/module';
+    import { Store } from '@/util';
     export default {
         data() {
             return {
@@ -60,19 +62,27 @@
                 };
                 User.login(this.user)
                 .then(res => {
+                    if(!res.data.success) {
+                        let err_msg = res.data.stateDesc || '请重新登录';
+                        this.$refs['alert'].alert('warning', '登录失败', err_msg);
+                        return false;
+                    }
                     //保存用户信息
                     const user = {
-                        rid: res.data.roles[0].rid,
-                        username: res.data.user.username
+                        rid: res.data.data.roles[0].rid,
+                        username: res.data.data.user.username
                     };
-                    sessionStorage.setItem('roles', JSON.stringify(res.data.roles));
-                    sessionStorage.setItem('user', JSON.stringify(user));
+                    Store.setItem('roles', JSON.stringify(res.data.data.roles));
+                    Store.setItem('user', JSON.stringify(user));
+                    Store.setItem('token', res.data.data.token);
                     //构建路由
                     buildRouter(user.rid);
                     //获取菜单列表
                     buildSidebarMenus(user.rid);
                     //跳转到首页
                     this.$router.push('/home');
+                }, err => {
+                    this.$refs['alert'].alert('warning', '登录失败', '请检查网络或联系管理员');
                 })
             }
         }
