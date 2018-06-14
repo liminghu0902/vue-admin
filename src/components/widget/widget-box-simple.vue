@@ -16,10 +16,11 @@
 </template>
 <script>
     export default {
+        name: 'widget-box-simple',
         props: {
             id: {default: parseInt(Math.random()*1000)},
             title: {default: ''},
-            widgetType: {default: 'info'}
+            widgetType: {default: 'info'}   
         },
         computed: {
             widgetId() {

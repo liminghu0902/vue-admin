@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import { Store } from '@/util';
+import { StoreDate } from '@/util';
 
 axios.interceptors.request.use(config => {
 	return config
@@ -25,25 +25,26 @@ export default {
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-				"Authorization": Store.getItem('token')
+				"Authorization": StoreDate.getItem('token')
 			}
 		}).then(response => {
-			return response;
+			return response.data;
 		})
 	},
-	get (url, params) {
+	get (url, params, data) {
 		return axios({
 			method: 'get',
 			baseURL: '',
 			url: url,
 			params: params || {},
+			responseType: data && data.responseType || 'json',
 			timeout: 10000,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
-				"Authorization": Store.getItem('token')
+				"Authorization": StoreDate.getItem('token')
 			}
 		}).then(response => {
-			return response;
+			return response.data;
 		})
 	}
 }

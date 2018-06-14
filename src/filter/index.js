@@ -1,6 +1,10 @@
 export default {
     formatDate(value) {
-        return value;
+        try {
+            return moment(value).format('YYYY-MM-DD hh:mm:ss');
+        } catch (error) {
+            return value;
+        }
     },
     //金额格式化
     formatMoney(value) {

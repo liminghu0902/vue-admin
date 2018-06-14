@@ -20,14 +20,14 @@
     </section>
 </template>
 <script>
-    import { Store } from '@/util';
+    import { StoreDate } from '@/util';
     export default {
         props: {
             title: {default: '页面标题'}
         },
         computed: {
             breadCrumbs() {
-                const breadCrumbs = Store.getItem('breadCrumbs');
+                const breadCrumbs = StoreDate.getItem('breadCrumbs');
                 return breadCrumbs ? breadCrumbs : [];
             }
         }

@@ -1,4 +1,4 @@
-import { Store } from '@/util';
+import { StoreDate } from '@/util';
 
 const filterSidebarMenus = (menu, name) => {
     if(menu.name === name) {
@@ -21,11 +21,11 @@ const filterSidebarMenus = (menu, name) => {
  * @param {String} name [当前点击的路由的名字]
  */
 export const buildBreadCrumbs = name => {
-    const sidebarMenus = Store.getItem('sidebarMenus') || [];
+    const sidebarMenus = StoreDate.getItem('sidebarMenus') || [];
     const menus = sidebarMenus.filter(menu => {
         return filterSidebarMenus(menu, name);
     });
-    Store.setItem('breadCrumbs', JSON.stringify(menus));
+    StoreDate.setItem('breadCrumbs', JSON.stringify(menus));
     return menus;
 }
  

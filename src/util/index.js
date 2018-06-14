@@ -1,11 +1,11 @@
 import Http from './http';
 import Cookie from './cookie';
 import UtilCom from './common';
-import Store from './store';
+import StoreDate from './storeDate';
 
 export {
     Http,
     Cookie,
     UtilCom,
-    Store
+    StoreDate
 }

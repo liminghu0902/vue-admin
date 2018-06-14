@@ -48,7 +48,7 @@ export default {
         this.timer = setTimeout(() => {
           this.isShow = false;
           clearTimeout(this.timer);
-        }, 1000 * time);
+        }, time);
       }
     },
     hide() {

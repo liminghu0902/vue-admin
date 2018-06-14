@@ -44,7 +44,7 @@
 </template>
 <script>
     import { User, buildRouter, buildSidebarMenus } from '@/module';
-    import { Store } from '@/util';
+    import { StoreDate } from '@/util';
     export default {
         data() {
             return {
@@ -62,19 +62,19 @@
                 };
                 User.login(this.user)
                 .then(res => {
-                    if(!res.data.success) {
-                        let err_msg = res.data.stateDesc || '请重新登录';
+                    if(!res.success) {
+                        let err_msg = res.stateDesc || '请重新登录';
                         this.$refs['alert'].alert('warning', '登录失败', err_msg);
                         return false;
                     }
                     //保存用户信息
                     const user = {
-                        rid: res.data.data.roles[0].rid,
-                        username: res.data.data.user.username
+                        rid: res.data.roles[0].rid,
+                        username: res.data.user.username
                     };
-                    Store.setItem('roles', JSON.stringify(res.data.data.roles));
-                    Store.setItem('user', JSON.stringify(user));
-                    Store.setItem('token', res.data.data.token);
+                    StoreDate.setItem('roles', JSON.stringify(res.data.roles));
+                    StoreDate.setItem('user', JSON.stringify(user));
+                    StoreDate.setItem('token', res.data.token);
                     //构建路由
                     buildRouter(user.rid);
                     //获取菜单列表
@@ -95,6 +95,7 @@
         width: 100%;
         height: 100%;
         background-color: #000;
+        overflow: auto;
     }
     .form-group {
         position: relative;

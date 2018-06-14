@@ -1,4 +1,4 @@
-import { Api } from '@/api';
+import Api from '@/api';
 import { Http } from '@/util';
 
 export const User = {

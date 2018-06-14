@@ -35,6 +35,7 @@
 </template>
 <script>
     export default {
+        name: 'file-select',
         props: {
             fileSelectCfg: {
                 type: Object,
@@ -62,7 +63,6 @@
                 this.$refs['input-file'].click();
             },
             doSelectFile(event) {
-                console.log(event)
                 const files = event.target.files;
                 this.handleSelectFiles(files);
             },

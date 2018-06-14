@@ -15,6 +15,7 @@
      * size: 进度条大小(sm, xs), 为空时，显示最大的进度条
      */
     export default {
+        name: 'Progress',
         props: {
             value: {default: '10%'},
             active: {default: true},

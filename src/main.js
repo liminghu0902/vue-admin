@@ -8,10 +8,13 @@ import components from './components';
 import i18n from './lang';
 import svgIcon from './icons';
 import VueForm from 'vue-form';
+import $ui from './components/ui-common';
 
 Vue.use(VueForm);
 
 Vue.config.productionTip = false;
+
+Vue.prototype.$ui = $ui;
 
 Object.keys(filter).forEach(key => {
   Vue.filter(key, filter[key]);

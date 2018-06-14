@@ -16,7 +16,7 @@
     </ul>
 </template>
 <script>
-    import { Store } from '@/util';
+    import { StoreDate } from '@/util';
     import { buildBreadCrumbs } from '@/module';
     export default {
         data() {
@@ -29,27 +29,50 @@
         },
         computed: {
             currentMenu() {
-                return Store.getItem('currentMenu') || 'home';
+                return StoreDate.getItem('currentMenu') || 'home';
             }
         },
         methods: {
             menuClick(menu) {
                 if(!menu.children || (menu.children && !menu.children.length)) {
                     //保存当前高亮的菜单
-                    Store.setItem('currentMenu', menu.name);
+                    StoreDate.setItem('currentMenu', menu.name);
                     //切换菜单高亮项
-                    $(this.$refs[menu.name]).addClass('active').siblings('li').removeClass('active');
+                    this.handleMenuLight(menu.name);
                     //构建面包屑导航
                     buildBreadCrumbs(menu.name);
                     this.$router.push({name: menu.name});
                 }
+            },
+            handleMenuLight(menuName) {
+                $(this.$refs[menuName]).addClass('active').siblings('li').removeClass('active');
+                $(this.$refs[menuName]).parents('li').siblings('li').removeClass('active');
+                $(this.$refs[menuName]).siblings('li').each(function() {
+                    if($(this).is('.menu-open')) {
+                        $(this).removeClass('menu-open').find('.treeview-menu').slideUp();
+                    }
+                })
+            },
+            initCurrentMenu(menuName) {
+                $(this.$refs[menuName])
+                .parents('li.treeview')
+                .addClass('menu-open') 
+                .children('.treeview-menu')
+                .slideDown();
+            }
+        },
+        watch: {
+            $route(to, from) {
+                this.handleMenuLight(to.name);
+                this.initCurrentMenu(to.name);
+                buildBreadCrumbs(to.name);
             }
         },
         beforeCreate() {
             this.$options.components.sidebarMenuNode = () => import('./sidebar-menu-node');
         },
         mounted() {
-            
+            this.initCurrentMenu(this.currentMenu);
         }
     }
 </script>

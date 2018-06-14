@@ -1,7 +1,5 @@
 <template>
-    <div class="calendar-wrapper">
-        <input type="text" :id="calendarId">
-    </div>
+    <input class="form-control pull-right" type="text" :id="calendarId">
 </template>
 <script>
     const d = new Date();
@@ -9,6 +7,7 @@
     const month = d.getMonth();
 
     export default {
+        name: 'Calendar',
         props: {
             id: {default: ''},
             minDate: {default(){return new Date()}},
@@ -52,7 +51,7 @@
             handleDateChange() {
                 const self = this;
                 this.date.on('change', function() {
-                    self.$emit('handleDateChange', self.date);
+                    self.$emit('handleDateChange', (new Date(self.date.val()).getTime()));
                 })
             },
             setDate(d) {

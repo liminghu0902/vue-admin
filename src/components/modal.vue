@@ -30,6 +30,7 @@
 </template>
 <script>
     export default {
+        name: 'Modal',
         props: {
             cancelBtnText: {default: '取消'},
             sureBtnText: {default: '确认'}
